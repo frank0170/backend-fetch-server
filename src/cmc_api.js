@@ -11,7 +11,7 @@ app.use(cors());
     const argument = req.query.argument;
     axios.get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/ohlcv/historical?symbol=' + argument + '&count=200', {
       headers: {
-        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+        'X-CMC_PRO_API_KEY': 'xxxxx-xxxxxx-xxxxxx'
       }
     })
       .then(response => {
@@ -26,7 +26,7 @@ app.use(cors());
   app.get('/top', cors(), (req, res) => {
     axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=100&convert=USD', {
       headers: {
-        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+        'X-CMC_PRO_API_KEY': 'xxxxx-xxxxxx-xxxxxx'
       }
     })
       .then(response => {
@@ -42,7 +42,7 @@ app.use(cors());
     const argument = req.query.argument;
     axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=' + argument + '&convert=USD', {
       headers: {
-        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+        'X-CMC_PRO_API_KEY': 'xxxxx-xxxxxx-xxxxxx'
       }
     })
       .then(response => {
@@ -59,7 +59,7 @@ app.use(cors());
     const argument = req.query.argument;
     axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?symbol=' + argument, {
       headers: {
-        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+        'X-CMC_PRO_API_KEY': 'xxxxx-xxxxxx-xxxxxx'
       }
     })
       .then(response => {
@@ -75,7 +75,7 @@ app.use(cors());
     const argument = req.query.argument;
     axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/info', {
       headers: {
-        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+        'X-CMC_PRO_API_KEY': 'xxxxx-xxxxxx-xxxxxx'
       }
     })
       .then(response => {

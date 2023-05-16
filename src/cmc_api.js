@@ -5,17 +5,13 @@ const cors = require('cors');
 const app = express();
 
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 
   app.get('/ohlcv', (req, res) => {
     const argument = req.query.argument;
-    axios.get('https://sandbox-api.coinmarketcap.com/v2/cryptocurrency/ohlcv/historical?symbol=' + argument, {
+    axios.get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/ohlcv/historical?symbol=' + argument + '&count=200', {
       headers: {
-        'X-CMC_PRO_API_KEY': 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c'
+        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
       }
     })
       .then(response => {
@@ -28,9 +24,58 @@ app.use(cors({
   });
 
   app.get('/top', cors(), (req, res) => {
-    axios.get('https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=50&convert=USD', {
+    axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=100&convert=USD', {
       headers: {
-        'X-CMC_PRO_API_KEY': 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c'
+        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+      }
+    })
+      .then(response => {
+        // res.header("Access-Control-Allow-Origin", "*");
+        res.send(response.data);
+      })
+      .catch(error => {
+        res.status(500).send(error);
+      });
+  });
+
+  app.get('/data', cors(), (req, res) => {
+    const argument = req.query.argument;
+    axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=' + argument + '&convert=USD', {
+      headers: {
+        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+      }
+    })
+      .then(response => {
+        // res.header("Access-Control-Allow-Origin", "*");
+        res.send(response.data);
+      })
+      .catch(error => {
+        res.status(500).send(error);
+      });
+  });
+
+
+  app.get('/metadata', (req, res) => {
+    const argument = req.query.argument;
+    axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?symbol=' + argument, {
+      headers: {
+        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
+      }
+    })
+      .then(response => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.send(response.data);
+      })
+      .catch(error => {
+        res.status(500).send(error);
+      });
+  });
+
+  app.get('/metadata2', (req, res) => {
+    const argument = req.query.argument;
+    axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/info', {
+      headers: {
+        'X-CMC_PRO_API_KEY': '9d669168-0ed6-4c2e-ae1f-e68b8d6d286a'
       }
     })
       .then(response => {

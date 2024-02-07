@@ -4,6 +4,8 @@ const cors = require("cors");
 
 const app = express();
 
+const port = process.env.PORT || 5050;
+
 app.use(cors());
 
 app.get("/global", (req, res) => {
@@ -120,6 +122,6 @@ app.get("/metadata2", (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server listening on port 3000");
 });

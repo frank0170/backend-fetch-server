@@ -49,7 +49,7 @@ app.get("/top", cors(), (req, res) => {
       "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=100&convert=USD",
       {
         headers: {
-          "X-CMC_PRO_API_KEY": "xxxxx-xxxxxx-xxxxxx",
+          "X-CMC_PRO_API_KEY": "9d669168-0ed6-4c2e-ae1f-e68b8d6d286a",
         },
       }
     )
